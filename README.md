@@ -1,78 +1,111 @@
-# Jekyll-Bootstrap
+# :briefcase: ResumeCards :briefcase:
 
-The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages
+ResumeCards is a Markdown based resume generator. It looks great on mobile/desktop and can be saved as PDF.
 
-## Usage
+## :briefcase: Live Demo :briefcase:
 
-For all usage and documentation please see: <http://jekyllbootstrap.com>
+### [View Demo and Documentation](http://ellekasai.github.io/resumecards)
 
-## Version
+![](http://cl.ly/image/3O342N0b0y1h/sample_default.png)
 
-0.3.0 - stable and versioned using [semantic versioning](http://semver.org/).
+You can save it as PDF too:
 
-**NOTE:** 0.3.0 introduces a new theme which is not backwards compatible in the sense it won't _look_ like the old version.
-However, the actual API has not changed at all.
-You might want to run 0.3.0 in a branch to make sure you are ok with the theme design changes.
+![](http://cl.ly/image/091w0b0M2S3G/resume_print_preview.png)
 
-## Milestones
+## :briefcase: Installation :briefcase:
 
-[0.4.0](https://github.com/plusjade/jekyll-bootstrap/milestones/v%200.4.0) - next release [ETA 03/29/2015]
+**Note:** ResumeCards uses Jekyll. Please read [Jekyll's documentation](http://jekyllrb.com/) if you get stuck.
 
-### GOALS
+[Fork this repo](http://github.com/ellekasai/resumecard/fork), clone it, and then run:
 
-* No open PRs against master branch.
-* Squash some bugs.
-* Add some new features (low-hanging fruit).
-* Establish social media presence.
+```
+bundle install
+```
+
+...which installs `github-pages` gem. After that, run the server:
+
+```
+jekyll serve --watch
+```
+### Warning
+
+* Once the server is started, you must go to [http://localhost:4000/resumecards/](http://localhost:4000/resumecards/), since `baseurl` is set as `"/resumecards"` initially. To use  http://localhost:4000/, change `baseurl` in `_config.yml` to `""` .
+
+## :briefcase: Usage :briefcase:
+
+### Editing Your Resume
+
+Edit `_posts/card-[1-9].md` like this:
+
+```markdown
+---
+type: "Work Experience"
+heading: "Bizreach"
+subheading: "Junior Product Designer"
+duration: "October 2013 – September 2014 (1 year)"
+location: "Tokyo, Japan"
+---
+
+Write in markdown here...
+```
+
+If you don't need some of the metadata, just remove them:
+
+```markdown
+---
+type: "Work Experience"
+heading: "Bizreach"
+---
+```
+
+### Other Files to Modify
+
+You **should** change these files before deploying:
+
+* `_config.yml`: You must change `baseurl`and `url`.
+  * Make sure to restart the server after you update `_config.yml`.
+* `_data/resume.yml`: You must change `photo`, `name` and `url`. Also, you must set `demo` to `false` to hide everything but your resume.
+* `CNAME`: Change this to host ResumeCards on a custom domain.
+* `README.md`: Write your own README!
+* `_includes/script.html`: Extra stuff before the `</body>` tag. Change or remove the default Google Analytics code.
+* `_includes/nav.html`: Modify or remove your contact links.
+
+### Customize the Theme
+
+To customize the color theme, edit the `color` section of `_data/resume.yml`.
+
+#### Red
+![](http://cl.ly/image/0Q442g393E0O/sample_red.png)
+
+#### Pink
+![](http://cl.ly/image/2r0d3C201Q2y/sample_pink.png)
+
+#### Brown
+![](http://cl.ly/image/1A3p0v2n2I2O/sample_brown.png)
+
+#### Blue
+![](http://cl.ly/image/102r3e1y010w/sample_blue.png)
+
+#### Purple
+![](http://cl.ly/image/130Y2y1X1228/sample_purple.png)
+
+#### Teal
+![](http://cl.ly/image/3L042k3L3i2m/sample_teal.png)
+
+#### Green
+![](http://cl.ly/image/031u3a070V3f/sample_green.png)
+
+## :briefcase: Author & License :briefcase:
+
+Elle Kasai
+
+- [Website](http://ellekasai.com/about)
+- [Twitter](http://twitter.com/ellekasai)
+
+[MIT License](http://ellekasai.mit-license.org).
+
+## :briefcase: Special Thanks :briefcase:
+
+* [Shu Uesugi](http://github.com/chibicode) - for the guidance on this project.
 
 
-### Bugs
-
-|Bug |Description
-|------|---------------
-|[#86](https://github.com/plusjade/jekyll-bootstrap/issues/86)  |&#x2611; Facebook Comments
-|[#113](https://github.com/plusjade/jekyll-bootstrap/issues/113)|&#x2611; ASSET_PATH w/ page & post
-|[#144](https://github.com/plusjade/jekyll-bootstrap/issues/144)|&#x2610; BASE_PATH w/ FQDN
-|[#227](https://github.com/plusjade/jekyll-bootstrap/issues/227)|&#x2611; Redundant JB/setup
-
-### Features
-
-|Bug |Description
-|------|---------------
-|[#98](https://github.com/plusjade/jekyll-bootstrap/issues/98)  |&#x2611; GIST Integration
-|[#244](https://github.com/plusjade/jekyll-bootstrap/issues/244)|&#x2611; JB/file_exists Helper
-|[#42](https://github.com/plusjade/jekyll-bootstrap/issues/42)  |&#x2611; Sort collections of Pages / Posts
-|[#84](https://github.com/plusjade/jekyll-bootstrap/issues/84)  |&#x2610; Detecting production mode
-
-### TODOS
-
-Review existing pull requests against plusjake/jekyll-bootstrap:master. Merge or close each.
-
-* Create twitter account. Add link / icon on jekyllbootstrap.com.
-* Create blog posts under plusjade/gh-pages, expose on jekyllbootstrap.com, feed to twitter account.
-* Announce state of project, announce roadmap(s), announce new versions as they’re released.
-
-## Contributing
-
-
-To contribute to the framework please make sure to checkout your branch based on `jb-development`!!
-This is very important as it allows me to accept your pull request without having to publish a public version release.
-
-Small, atomic Features, bugs, etc.
-Use the `jb-development` branch but note it will likely change fast as pull requests are accepted.
-Please rebase as often as possible when working.
-Work on small, atomic features/bugs to avoid upstream commits affecting/breaking your development work.
-
-For Big Features or major API extensions/edits:
-This is the one case where I'll accept pull-requests based off the master branch.
-This allows you to work in isolation but it means I'll have to manually merge your work into the next public release.
-Translation : it might take a bit longer so please be patient! (but sincerely thank you).
-
-**Jekyll-Bootstrap Documentation Website.**
-
-The documentation website at <http://jekyllbootstrap.com> is maintained at https://github.com/plusjade/jekyllbootstrap.com
-
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)
